@@ -50,4 +50,12 @@
       }
     }
   }
+
+  @media (max-width: 1300px) {
+    padding-left: 30px;
+
+    &__label b {
+      width: 121px;
+    }
+  }
 }

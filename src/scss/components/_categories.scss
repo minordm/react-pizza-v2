@@ -1,8 +1,11 @@
 @import '../variables';
 
 .categories {
+  overflow: hidden;
+
   ul {
     display: flex;
+    overflow: auto;
 
     li {
       background-color: #f9f9f9;
@@ -13,6 +16,10 @@
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;
       @include noselect();
+
+      @media (max-width: 760px) {
+        padding: 8px 20px;
+      }
 
       &:hover {
         background-color: darken(#f9f9f9, 2%);

@@ -35,7 +35,7 @@ export const Home = () => {
   if (error) return <p>Ошибка в запросе</p>;
 
   return (
-    <>
+    <div className="container">
       <div className="content__top">
         <Categories />
         <Sort />
@@ -46,6 +46,6 @@ export const Home = () => {
           ? [...new Array(6)].map((_, i) => <Skeleton key={i} />)
           : pizzas.map((pizza) => <PizzaBlock {...pizza} />)}
       </div>
-    </>
+    </div>
   );
 };
