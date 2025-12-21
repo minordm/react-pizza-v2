@@ -32,8 +32,8 @@ export default function PizzaBlock({
           {sizes.map((size, i) => (
             <li
               key={i}
-              className={activeSize === i ? "active" : ""}
-              onClick={() => setActiveSize(i)}
+              className={activeSize === size ? "active" : ""}
+              onClick={() => setActiveSize(size)}
             >
               {size} см.
             </li>
