@@ -10,11 +10,23 @@ export const Home = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [categoryId, setCategoryId] = useState(0);
+  const [sortType, setSortType] = useState({
+    name: "популярности",
+    sortProperty: "rating",
+  });
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
+
+        const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
+        const sortBy = sortType.sortProperty.replace("-", "");
+        const category = categoryId > 0 ? `category=${categoryId}` : "";
+
         const response = await fetch(
-          "https://69457a70ed253f51719b8122.mockapi.io/pizzas"
+          `https://69457a70ed253f51719b8122.mockapi.io/pizzas?${category}&sortBy=${sortBy}&order=${order}`
         );
         if (!response.ok) {
           throw new Error("error in network");
@@ -30,15 +42,16 @@ export const Home = () => {
     };
 
     fetchData();
-  }, []);
+    window.scroll(0, 0);
+  }, [categoryId, sortType]);
 
   if (error) return <p>Ошибка в запросе</p>;
 
   return (
     <div className="container">
       <div className="content__top">
-        <Categories />
-        <Sort />
+        <Categories value={categoryId} onChangeCategory={setCategoryId} />
+        <Sort value={sortType} onChangeSort={setSortType} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

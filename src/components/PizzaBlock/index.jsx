@@ -1,9 +1,10 @@
 import { useState } from "react";
 
+import image from "../../assets/pizza.jpeg";
+
 export default function PizzaBlock({
   title = "Чизбургер-пицца",
   price = 395,
-  imageUrl,
   sizes = [26, 30, 40],
   types = [0, 1],
 }) {
@@ -15,7 +16,7 @@ export default function PizzaBlock({
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
-        <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+        <img className="pizza-block__image" src={image} alt="Pizza" />
         <h4 className="pizza-block__title">{title}</h4>
         <div className="pizza-block__selector">
           <ul>
